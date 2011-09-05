@@ -1,7 +1,12 @@
 #################################################
+NB:		These examples are created for general usage and are not supported or maintained by Red Hat.  
+
 @author:	Nabeel Saad
+@email:		nsaad@redhat.com
 @date:		2011.09.05
-@description:	This is a project containing a basic set of command line interface (CLI) scripts to use against the JBoss Operations Network (JON).  These are created for general usage and are not supported or maintained by Red Hat.  These are good examples to get you started on your CLI dealings.
+
+@description:	This is a project containing a basic set of command line interface (CLI) scripts to use against the JBoss Operations Network (JON).  These are good examples to get you started on your CLI dealings.
+
 @environment:	These scripts were tested on a Fedora 15 desktop using JON 2.4.1 with the most recent patches available from the Customer Support Portal using postgres 8.4 as the backend database
 #################################################
 
