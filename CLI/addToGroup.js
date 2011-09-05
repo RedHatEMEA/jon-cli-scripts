@@ -1,6 +1,7 @@
 //Params Required: groupName searchPattern
 //Params Optional: resourceType
-//Usage: addToGroup.js groupName searchPattern [resourceType]		##Adds the resource (if found) into the specified group
+//Usage: addToGroup.js
+//Description: Adds the resource (if found) into the specified group
 /*
  * addToGroup.js
  * ----------------

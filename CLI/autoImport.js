@@ -1,4 +1,5 @@
-//Usage: autoImport.js 		##Imports all auto-discovered inventory into JON
+//Usage: autoImport.js
+//Description: Imports all auto-discovered inventory into JON
 // autoImport.js
 rhq.login('rhqadmin', 'rhqadmin');
  

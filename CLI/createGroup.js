@@ -1,5 +1,7 @@
 //Params Required: groupName pluginName resourceType
-//Usage: createGroup.js groupName pluginName resourceType		##Create a group for the specified resource type
+//Params Optional: 
+//Usage: createGroup.js
+//Description: Create a group for the specified resource type
 /*
  * createGroup.js
  * --------------

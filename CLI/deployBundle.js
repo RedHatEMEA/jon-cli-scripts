@@ -1,6 +1,7 @@
 //Params Required: bundleName
 //Params Optional: deploymentDesc
-//Usage: deployBundle.js 		##Deploys a bundle using the specified bundleName and optionally a deployment description to be used
+//Usage: deployBundle.js 		
+//Description: Deploys a bundle using the specified bundleName and optionally a deployment description to be used
 rhq.login('rhqadmin', 'rhqadmin');
 
 var bundleName = args[0];
@@ -57,6 +58,8 @@ if (args.length < 1 || bundleName == "") {
 		} else {
 			println("The bundle does not have a destination and cannot be deployed.");
 		}
+	} else {
+		println("The bundle with name " + bundleName + " does not exist in the system.");
 	}
 }
 

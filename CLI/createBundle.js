@@ -1,5 +1,6 @@
 //Params Required: bundleZipFile
-//Usage: createBundle.js 		##Creates a bundle version using the specified file
+//Usage: createBundle.js
+//Description: Creates a bundle version using the specified file
 rhq.login('rhqadmin', 'rhqadmin');
 
 var fileName = args[0];
