@@ -1,0 +1,22 @@
+//Params Required: bundleName groupName destinationName destinationLocation
+//Params Optional: destinationDesc
+//Usage: createBundleDestination.js 		##Creates a bundle destination using the specified bundleName, groupName, providing a destination name and location and optionally a destination description.
+rhq.login('rhqadmin', 'rhqadmin');
+
+var bundleName = args[0];
+var groupName = args[1];
+var destinationName = args[2];
+var destinationLocation = args[3];
+var destinationDesc = args[4];
+
+if (false) {
+	println("You need to provide all the required params to create the bundle destination...");
+} else {
+	for (var i = 0; i < args.length; i++) {
+		println(i + ": " + args[i]);
+	}
+	println("bundleName: " + bundleName);
+	println("\nargs" + args.toString());
+}
+
+rhq.logout();

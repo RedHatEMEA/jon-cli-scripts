@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/repos/!svn/ver/1258/trunk/jboss-demos/JON/CLI
+END
+autoImport.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/repos/!svn/ver/1258/trunk/jboss-demos/JON/CLI/autoImport.js
+END
+addToGroup.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/repos/!svn/ver/1258/trunk/jboss-demos/JON/CLI/addToGroup.js
+END
+createGroup.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/repos/!svn/ver/1258/trunk/jboss-demos/JON/CLI/createGroup.js
+END
+createBundleDestination.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/repos/!svn/ver/1258/trunk/jboss-demos/JON/CLI/createBundleDestination.js
+END
+createBundle.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/repos/!svn/ver/1258/trunk/jboss-demos/JON/CLI/createBundle.js
+END
+deployBundle.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/repos/!svn/ver/1259/trunk/jboss-demos/JON/CLI/deployBundle.js
+END
