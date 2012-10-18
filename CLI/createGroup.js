@@ -21,6 +21,7 @@
 
 // name of the group
 rhq.login('rhqadmin', 'rhqadmin');
+println("Running createGroup.js");
 var groupName = "GroupName";
 
 // Name of the plugin which should handle this compatible group (JBossAS or JBossAS5)
@@ -35,7 +36,6 @@ println("About to create a new Compatible Group with name " + groupName + " and 
 
 // First find resourceType specified by pluginName
 var resType = ResourceTypeManager.getResourceTypeByNameAndPlugin(resName, pluginName);
-	      ResourceTypeManager.getResourceTypeByNameAndPlugin("Linux", "Platforms");
 println("resType:" + resType)
 // Secondly, test to see if the specified group name already exists
 var criteria = ResourceGroupCriteria();
@@ -45,7 +45,7 @@ var resourceGroups = ResourceGroupManager.findResourceGroupsByCriteria(criteria)
 
 if( resourceGroups != null && resourceGroups.size() > 0 ) {
 	println("\nA group with name " + groupName + " already exists: ID = " + resourceGroups.get(0).getId());
-	println("Not created group.  Call script with a new group name or delete existing group.");
+	println("Group not created.  Call script with a new group name or delete existing group.");
 } else {
 
 	// Now just create the group

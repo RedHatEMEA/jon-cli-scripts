@@ -7,6 +7,7 @@ function cliCommandsMenu () {
 	CLI_SCRIPT_FOLDER=$1
 	PARAMS_REQ=
 	PARAMS_OPT=
+
 	while true;
 	do
 		menuHeader "CLI Scripts"
@@ -33,11 +34,11 @@ function cliCommandsMenu () {
 				PARAMS_STRING="${PARAMS_STRING} [${PARAM}]"
 			done
 
-			echo $COUNT. $f
+			echo "$COUNT. $f"
 			USAGE=`grep "//Usage: " $f`
 			DESC=`grep "//Description: " $f`
-			echo ${USAGE#*\/\/} ${PARAMS_STRING}
-			echo ${DESC#*\/\/}
+			echo "${USAGE#*\/\/} ${PARAMS_STRING}"
+			echo "${DESC#*\/\/}"
 			CLI_CMD_ARRAY[$COUNT]=$f
 			COUNT=$(( $COUNT + 1 ))
 			newLine
@@ -51,7 +52,7 @@ function cliCommandsMenu () {
 			basicMenuOptions $option
 		else
 			if [[ "$option" != +([0-9]) || "$option" -lt "1" || "$option" -gt "$COUNT" ]]; then
-				echo Invalid input, please enter a value between 1 and $COUNT
+				echo "Invalid input, please enter a value between 1 and $COUNT"
 			else
 				PARAMS_STRING=
 
@@ -66,7 +67,7 @@ function cliCommandsMenu () {
 				#Read the required parameters
 				for PARAM in $PARAMS_REQ
 				do
-					echo Input required $PARAM:
+					echo "Input required $PARAM:"
 					read INPUT_PARAM
 					PARAMS_STRING="${PARAMS_STRING} ${INPUT_PARAM}"
 				done
@@ -74,7 +75,7 @@ function cliCommandsMenu () {
 				#Read the optional parameters
 				for PARAM in $PARAMS_OPT
 				do
-					echo Input optional $PARAM:
+					echo "Input optional $PARAM:"
 					read INPUT_PARAM
 					PARAMS_STRING="${PARAMS_STRING} ${INPUT_PARAM}"
 				done
@@ -82,14 +83,13 @@ function cliCommandsMenu () {
 			
 				#Call the JS script with the appropiate params
 				getRHQCLIDetails
-				$CLI_COMMAND -f ${CLI_CMD_ARRAY[$option]} ${PARAMS_STRING}
+ 				$CLI_COMMAND -f ${CLI_CMD_ARRAY[$option]} ${PARAMS_STRING}
 			fi
 		fi
 
 		pause
 	done
 }
-
 
 #function - menuHeader (menuTitle) - outputs the menu title, with *s below and a new line 
 function menuHeader () {
@@ -165,7 +165,12 @@ function getRHQCLIDetails () {
 	export RHQ_CLI_JAVA_HOME=$JAVA_HOME
 	RHQ_OPTS="-s $JON_HOST -u $JON_USER -t $JON_PORT -p $JON_PWD"
 
-	CLI_COMMAND=`find $CLI_CLIENT -name "rhq*cli.sh"`
+	if [[ -d $CLI_CLIENT ]]; then
+		CLI_COMMAND=`find $CLI_CLIENT -name "rhq*cli.sh"`
+	else
+		echo "ERROR: JON Tools not installed, quitting."
+		exit
+	fi
 }
 
 cliCommandsMenu

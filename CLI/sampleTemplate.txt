@@ -1,17 +1,27 @@
+//When you are creating a new JS script file to use with the JON Demo installer (or the CLI command utility), a few things to bear in mind:
+
+//1. If you want the CLI command to be able to display the params, usage and description, you MUST have the following lines at the top of the file
+
 //Params Required: bundleName destinationName deploymentDesc
-//Params Optional: configParam1 configParam2 configParam3 configParam4 configParam5 configParam6
-//Usage: deployBundle.js 		
-//Description: Deploys a bundle using the specified bundleName using the destinationName and a deployment description to be used.  Along with optionally adding in config name/value params to be used by the bundle recipe.
+//Params Optional: configParam1 configParam2
+//Usage: sampleTemplate.js 		
+//Description: Shows how to set up a JS template for CLI command
+
+//2. You will want to login to the JON server
+
 rhq.login('rhqadmin', 'rhqadmin');
-println("Running deployBundle.js");
+
+//3. You can use println to provide output
+
+println("Running sampleTemplate.js");
+
+//4. You can define variables for the parameters passed in
 
 var bundleName = args[0];
 var destinationName = args[1];
 var deploymentDesc = args[2]
 
-var bundleId;
-var bundleVersion; 
-var destination;
+//5. You can have an error check, and have all the major functions return true/false depending on error
 
 var error = checkArgs();
 if (!error) error = findBundle();
@@ -19,7 +29,11 @@ if (!error) error = findDestination();
 if (!error) error = checkGroup();
 if (!error)	deployBundle();
 
+//6. Don't forget to log out at the end
+
 rhq.logout();
+
+//7. You can have as many functions as you like
 
 function checkArgs() {
 	if (args.length < 2 || bundleName == "" || destinationName == "" || deploymentDesc == "") {

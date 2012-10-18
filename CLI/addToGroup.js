@@ -20,6 +20,7 @@
 
 // name of the group
 rhq.login('rhqadmin', 'rhqadmin');
+println("Running addToGroup.js");
 var groupName = "GroupName";
 var searchPattern;
 var resourceType = "JBossAS Server";
@@ -37,7 +38,7 @@ if( args.length < 2 ) {
 // Secondly, test to see if the specified group name already exists
 var criteria = ResourceGroupCriteria();
 criteria.addFilterName(groupName);
-criteria.addFilterResourceTypeName(resourceType);
+//criteria.addFilterResourceTypeName(resourceType);
 criteria.fetchExplicitResources(false);
 var resourceGroups = ResourceGroupManager.findResourceGroupsByCriteria(criteria);
 
@@ -45,6 +46,7 @@ if( resourceGroups == null || resourceGroups.size() == 0 ) {
 	throw("A group with name " + groupName + " does not exists");
 }
 var group = resourceGroups.get(0);
+println("[DEBUG] found group " + group);
 
 // now, search for EAP resources based on criteria
 criteria = new ResourceCriteria();
@@ -54,12 +56,15 @@ criteria.addFilterResourceTypeName(resourceType);
 var resources = ResourceManager.findResourcesByCriteria(criteria);
 
 if( resources != null ) {
+	println("[DEBUG] found " + resources.size() + " resource(s) with searchPattern[" + searchPattern + "]");
 	if( resources.size() > 1 ) {
-		println("Found more than one " + resourceType + " item. Try to specialize.");
+		println("Found more than one " + resourceType + " item. Adding them all into the group...");
 		for( i =0; i < resources.size(); ++i) {
 			var resource = resources.get(i);
 			println("  found " + resource.name );
+			ResourceGroupManager.addResourcesToGroup(group.id, [resource.id]);
 		}
+		println("\nAdded to Group!");
 	}
 	else if( resources.size() == 1 ) {
 		resource = resources.get(0);

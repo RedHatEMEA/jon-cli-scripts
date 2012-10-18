@@ -1,10 +1,31 @@
-//Usage: autoImport.js 		##Imports all auto-discovered inventory into JON
-// autoImport.js
+//Params Required: serverName
+//Params Optional: 
+//Usage: importServer.js
+//Description: Imports the specified server into the JON server
+
 rhq.login('rhqadmin', 'rhqadmin');
- 
-var resources = findUncommittedResources();
-var resourceIds = getIds(resources);
-DiscoveryBoss.importResources(resourceIds);
+println("Running importServer.js");
+
+var serverName;
+
+function checkArgs() {
+	if (args.length < 1) {
+		println("You need to provide the server name that you want to import.");
+		return true;
+	} else {
+		serverName = args[0];
+		return false;
+	}
+}
+
+var error = checkArgs();
+if (!error) {
+	 
+	var resources = findUncommittedResources();
+	var resourceIds = getIds(resources);
+	DiscoveryBoss.importResources(resourceIds);
+	
+}
  
 rhq.logout();
  
@@ -13,6 +34,7 @@ rhq.logout();
 function findUncommittedResources() {
     var criteria = ResourceCriteria();
     criteria.addFilterInventoryStatus(InventoryStatus.NEW);
+    criteria.addFilterName(serverName);
      
     return ResourceManager.findResourcesByCriteria(criteria);
 }

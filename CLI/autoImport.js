@@ -2,10 +2,14 @@
 //Description: Imports all auto-discovered inventory into JON
 // autoImport.js
 rhq.login('rhqadmin', 'rhqadmin');
+println("Running autoImport.js");
  
 var resources = findUncommittedResources();
 var resourceIds = getIds(resources);
-DiscoveryBoss.importResources(resourceIds);
+
+if (resourceIds.length > 0) {
+	DiscoveryBoss.importResources(resourceIds);
+}
  
 rhq.logout();
  

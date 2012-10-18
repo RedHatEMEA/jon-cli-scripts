@@ -14,3 +14,5 @@ CLI_CLIENT=/opt/jon-demo/jon-tools/
 JAVA_HOME=/opt/jdk1.6.0_26/
 
 #################################################
+
+
